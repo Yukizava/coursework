@@ -1,3 +1,1 @@
-# coursework
-AKiTP
-Heuristic Algorithm
+# Heuristic Algorithm
