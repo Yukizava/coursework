@@ -1,8 +1,10 @@
 from customtkinter import *
+import method
 window = CTk()
 window.title("Курсовая")
 window.geometry("650x500+120+120")
 window.resizable(True, True)
+
 
 text_var = []
 entries = []
@@ -38,8 +40,10 @@ def get_mat():
     for i in range(rows):
         matrix.append([])
         for j in range(cols):
-            matrix[i].append(text_var[i][j].get())
+            matrix[i].append(int(text_var[i][j].get()))
+            print(type(matrix[i][j]))
     print(matrix)
+
 
 e = CTkEntry(window)
 e.place(x=180, y=30)
