@@ -1,13 +1,16 @@
 from customtkinter import *
+import tkinter
 import method
 window = CTk()
 window.title("Курсовая")
-window.geometry("650x500+120+120")
+window.geometry("1280x720+120+120")
 window.resizable(True, True)
-
+font = CTkFont(size=24)
 
 text_var = []
 entries = []
+
+
 def get_x(e):
     global entries
     for i in entries:
@@ -34,6 +37,7 @@ def get_x(e):
         x2 = 0
     button2.place(x=x_save / 18, y=60 + y2)
 
+
 def get_mat():
     rows, cols = (rc, rc)
     matrix = []
@@ -41,16 +45,30 @@ def get_mat():
         matrix.append([])
         for j in range(cols):
             matrix[i].append(int(text_var[i][j].get()))
-            print(type(matrix[i][j]))
-    print(matrix)
+    return matrix
 
+
+def work():
+    result, sum = method.heuristic_algorithm(get_mat())
+    textbox_result.insert("0.0", f"Результат работы алгоритма:\nПостроенное КСД: {result}\nСуммарная длина ребер равна: {sum}")
+
+
+def click_button_clear():
+    textbox_result.delete("1.0", tkinter.END)
+
+
+CTkLabel(window, text="Введите кол-во вершин :").place(x=20, y=30)
 
 e = CTkEntry(window)
 e.place(x=180, y=30)
 e.bind("<Return>", get_x)
 
-CTkLabel(window, text="Введите кол-во вершин :").place(x=20, y=30)
+button2 = CTkButton(window, text="Подтвердить", width=40, command=work)
 
-button2 = CTkButton(window, text="Подтвердить", width=40, command=get_mat)
+textbox_result = CTkTextbox(window, width=600, height=600, font=font)
+textbox_result.place(x=600, y=25)
+
+button_3 = CTkButton(window, text="Очистить", command=click_button_clear)
+button_3.place(x=840, y=650)
 
 window.mainloop()
