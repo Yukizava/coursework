@@ -1,5 +1,4 @@
 import numpy as np
-matrix_for_test = [[0, 1, 2, 4, 1], [1, 0, 2, 3, 5], [2, 2, 0, 4, 5], [4, 3, 4, 0, 3], [1, 5, 5, 3, 0]]
 
 
 def heuristic_algorithm(matrix):
@@ -65,6 +64,3 @@ def get_result(result):
         for j in range(len(result[i])):
             result[i][j] += 1
     return result
-
-
-print(heuristic_algorithm(matrix_for_test))
